@@ -1,0 +1,31 @@
+.navbar .nav-links a{
+  transition: background;
+}
+
+.hooks ul{
+  padding-left: 2rem;
+}
+
+.hooks > li{
+  font-weight: bold;
+}
+
+.btn{
+  padding: 8px 10px ;
+  border: none;
+  cursor: pointer;
+  color: white;
+  border-radius: 4px;
+}
+
+.warning{
+  background-color: orange;
+}
+
+.info{
+  background-color: skyblue;
+}
+
+.danger{
+  background-color: red;
+}

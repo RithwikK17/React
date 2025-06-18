@@ -1,0 +1,51 @@
+*{
+  box-sizing: border-box;
+}
+
+body{
+  width: 100%;
+  height: 100%;
+  overflow-x: hidden;
+  padding: 0;
+  margin: 0;
+}
+
+.container{
+  width: 50%;
+  margin: auto;
+}
+
+.calculator .keypad{
+  display: grid;
+  grid-template-columns: repeat(auto-fill,minmax(23%,1fr));
+  grid-gap: 5px;
+  padding-top: 0.5rem;
+}
+
+.keypad .btn{
+  padding: 12px 14px;
+  border: none;
+  cursor: pointer;
+}
+.calculator .display{
+  background-color: #222;
+  padding: 10px;
+  display: flex;
+  flex-direction: column;
+  color: #fff;
+}
+.display .inp{
+  font-size: 1rem;
+}
+.display .out{
+  font-size: 2rem;
+  font-weight: 400;
+}
+
+@media screen and (max-width:770px){
+  .calculator .keypad{
+    display: grid;
+    grid-template-columns: repeat(auto-fill,minmax(20%,1fr));
+    grid-gap: 5px;
+  }
+}
