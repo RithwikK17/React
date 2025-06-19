@@ -5,9 +5,7 @@ function TodoList(props){
      const {todos,tab} = props
 
     //  useMemo(callback,[dependancy])
-        const visibleTodos = useMemo(()=>{
-
-        },[])
+        const visibleTodos = useMemo(()=>filterTodos(todos,tab),[todos,tab])
     return(
         <div className="container">
             <p>
@@ -15,7 +13,13 @@ function TodoList(props){
             </p>
             <div className="blk">
                 <ul className="List">
-                    
+                    {
+                        visibleTodos?.map((item,index)=>{
+                            return(
+                                <li key={index} className={item?.completed ? "succes-list": "warning-list"}> {item?.text} </li>
+                            )
+                        })
+                    }
                 </ul>
             </div>
         </div>
