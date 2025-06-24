@@ -1,5 +1,7 @@
 import React, { useState } from 'react'
-import { toast } from 'react-toastify';
+import { toast } from 'react-toastify'
+import axios from 'axios'
+
 
 const URL = "https://mern-crud-rest-api.onrender.com";
 
@@ -21,13 +23,19 @@ function Create() {
 
   const submitHandler = async (e) => {
     try{
-      e.preventDefult();// to avoid page refresh on reload
+      e.preventDefault();// to avoid page refresh on reload
 
       let data = {
         ...user,
         gender
       }
       console.log(`new user =`, data)
+
+      await axios.post(`${URL}/api/user/add`, data)
+      .then(res =>{
+        toast.success(res.data.msg)
+      })
+      .catch(err=>toast.error(err.response.data.msg))
 
     }catch(error){
       toast.error(error.response)
@@ -42,6 +50,8 @@ function Create() {
           <div className="display-3 text-success">Create User</div>
         </div>
       </div>
+
+      
       <div className="row">
         <div className="col-md-6 offset-md-3">
           <div className="card">
@@ -62,15 +72,15 @@ function Create() {
                 <div className='form-group mt-2'>
                   <label htmlFor="gender">Your Gender <br /></label>
                   <div className="form-check form-check-inline">
-                    <input type="radio" name="gender" id="gender" value={"male"} className='form-check-input' onChange={()=> setGender(e.target.value)} />
+                    <input type="radio" name="gender" id="gender" value={"male"} className='form-check-input' onChange={(e)=> setGender(e.target.value)} />
                     <label className='form-check-label'>Male</label>
                   </div>
                   <div className="form-check form-check-inline">
-                    <input type="radio" name="gender" id="gender" value={"female"} className='form-check-input' onChange={()=> setGender(e.target.value)} />
+                    <input type="radio" name="gender" id="gender" value={"female"} className='form-check-input' onChange={(e)=> setGender(e.target.value)} />
                     <label className='form-check-label'>Female</label>
                   </div>
                   <div className="form-check form-check-inline">
-                    <input type="radio" name="gender" id="gender" value={"others"} className='form-check-input' onChange={()=> setGender(e.target.value)} />
+                    <input type="radio" name="gender" id="gender" value={"others"} className='form-check-input' onChange={(e)=> setGender(e.target.value)} />
                     <label className='form-check-label'>Others</label>
                   </div>
                 </div>
